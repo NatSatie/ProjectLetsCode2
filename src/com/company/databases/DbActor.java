@@ -12,16 +12,20 @@ public class DbActor extends Database implements DatabaseActorInterface{
         super.db = new ArrayList<Actor>();
     }
 
-    public void register(GenericObjectType elem, Movie movie) {
-        if (search((Actor) elem)){
-            add((Actor) elem);
+    @Override
+    public void register(Actor elem, Movie movie) {
+        if (this.search(elem.getName())){
+            this.add(elem);
+            elem.addMovie(movie);
+        } else {
+            Actor a = this.getElement(elem.getName());
+            a.addMovie(movie);
+            super.db.set(this.getIndex(elem.getName()), a);
         }
-        update((Actor) elem, movie);
-        // System.out.println(elem.toString());
     }
 
     @Override
-    public GenericObjectType getElement(String name) {
+    public Actor getElement(String name) {
         Actor a = (Actor) this.db
                 .stream()
                 .filter(e -> ((Actor) e).getName().equals(name))
@@ -30,25 +34,27 @@ public class DbActor extends Database implements DatabaseActorInterface{
         return a;
     }
 
-    private void add(Actor elem) {
-        db.add(elem);
+    public int getIndex(String name) {
+        Actor a = this.getElement(name);
+        int index = super.db.indexOf(a);
+        return index;
     }
 
-    private boolean search(Actor elem){
-        if (this.db
+    private void add(Actor elem) {
+        super.db.add(elem);
+    }
+
+    private boolean search(String actor){
+        if (super.db
                 .stream()
-                .filter( e -> ((Actor)e).getName().equals(elem.getName()))
+                .filter( e -> ((Actor)e).getName().equals(actor))
                 .findAny()
                 .isPresent()){
-            return true;
-        } return false;
+            return false;
+        } return true;
     }
 
     private void update(Actor elem, Movie m) {
-        int index = db.indexOf(elem);
-        if (index != -1){
-            elem.addMovie(m);
-            db.set(index, elem);
-        }
+        elem.addMovie(m);
     }
 }

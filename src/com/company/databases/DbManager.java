@@ -17,10 +17,12 @@ public final class DbManager {
     public void init(){
         List<String[]> actressInfo = FileReader.readInput("src/com/company/files/actresses.csv");
         List<String[]> actorsInfo = FileReader.readInput("src/com/company/files/actors.csv");
+        List<String[]> sampleTest = FileReader.readInput("src/com/company/files/actors-reduced.csv");
 
-        actressInfo.stream().forEach(
+        sampleTest.stream().forEach(
                 e -> processInfo((String[]) e, GenderEnum.FEMALE)
         );
+
         // FileReader.readInput("src/com/company/files/actors.csv", GenderEnum.MALE);
     }
 
@@ -34,7 +36,7 @@ public final class DbManager {
         this.dbMovie.register(new Movie(movieName, yearRelease));
         this.dbActor.register(new Actor(actorName, yearRelease - actorsAge, gender),
                 (Movie) this.dbMovie.getElement(movieName));
-        System.out.println(this.dbActor.getDb().size());
-        System.out.println(this.dbMovie.getDb().size());
+        //System.out.println(this.dbActor.getDb().size());
+        //System.out.println(this.dbMovie.getDb().size());
     }
 }

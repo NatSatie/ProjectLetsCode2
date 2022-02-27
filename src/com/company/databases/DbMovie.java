@@ -18,11 +18,9 @@ public class DbMovie extends Database{
             System.out.println("Filme " + ((Movie) elem).getName() + " ja existe");
         } else {
             add((Movie) elem);
-            // System.out.println(((Movie)elem).toString());
         }
     }
 
-    @Override
     public GenericObjectType getElement(String name) {
         Movie m = (Movie) super.db
                 .stream()

@@ -14,7 +14,6 @@ public class DbOscar extends Database{
 
     }
 
-    @Override
     public GenericObjectType getElement(String name) {
         return null;
     }

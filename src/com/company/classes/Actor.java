@@ -17,24 +17,24 @@ public class Actor extends GenericObjectType {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public GenderEnum getGender() {
-        return gender;
+        return this.gender;
     }
 
     public int getBirthYear() {
-        return birthYear;
+        return this.birthYear;
     }
 
     public List<Movie> getHistory() {
-        return history;
+        return this.history;
     }
 
     public void addMovie(Movie m){
-        history.add(m);
-        System.out.println(history.size());
+        this.history.add(m);
+        // System.out.println(history.size());
     }
 
     private String actorsDescription(){
@@ -43,7 +43,7 @@ public class Actor extends GenericObjectType {
                 "Ano de nascimento " + this.birthYear + "\r\n" +
                 "HISTORICO DE FILMES PREMIADOS AO OSCAR: \r\n";
         for ( Movie m : this.history){
-            s.concat(m.toString());
+            s += m.toString();
         }
         return s;
     }
