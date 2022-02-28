@@ -3,7 +3,7 @@ package com.company.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Actor extends GenericObjectType {
+public class Actor extends GenericObjectType implements Comparable<GenericObjectType> {
     private String name;
     private int birthYear;
     private GenderEnum gender;
@@ -34,16 +34,21 @@ public class Actor extends GenericObjectType {
 
     public void addMovie(Movie m){
         this.history.add(m);
-        // System.out.println(history.size());
+    }
+
+    public int getNumberOfOscarsAwarded() {
+        return this.history.size();
     }
 
     private String actorsDescription(){
         // "Genero " + (gender.equals(GenderEnum.FEMALE) ? " Feminino" : " Masculino") + "\r\n" +
-        String s = "------------ Ator: " + this.name + " ------------\r\n" +
-                "Ano de nascimento " + this.birthYear + "\r\n" +
-                "HISTORICO DE FILMES PREMIADOS AO OSCAR: \r\n";
+        String s = "Ator: " + this.name + "\r\n" +
+                "Ano de nascimento: " + this.birthYear + "\r\n" +
+                "Genero: " + (gender.equals(GenderEnum.FEMALE) ? " Feminino" : " Masculino") + "\r\n" +
+                "HISTORICO DE FILMES PREMIADOS AO OSCAR ("+ this.getNumberOfOscarsAwarded() +") \r\n";
         for ( Movie m : this.history){
-            s += m.toString();
+            int age = m.getYearRelease()-this.birthYear;
+            s += m.toString() + "aos " + age + " anos\r\n";
         }
         return s;
     }
@@ -51,5 +56,14 @@ public class Actor extends GenericObjectType {
     @Override
     public String toString(){
         return this.actorsDescription();
+    }
+
+    @Override
+    public int compareTo(GenericObjectType o) {
+        if (this.birthYear > ((Actor)o).getBirthYear()){
+            return -1;
+        } else if (this.birthYear < ((Actor)o).getBirthYear()){
+            return 1;
+        } return 0;
     }
 }

@@ -1,6 +1,6 @@
 package com.company.classes;
 
-public class Movie extends GenericObjectType{
+public class Movie extends GenericObjectType implements Comparable<GenericObjectType>{
     private String name;
     private int yearRelease;
 
@@ -19,6 +19,15 @@ public class Movie extends GenericObjectType{
 
     @Override
     public String toString(){
-        return "Filme: " + this.name + " (" + this.yearRelease + ")\r\n";
+        return this.name + " (" + this.yearRelease + ") ";
+    }
+
+    @Override
+    public int compareTo(GenericObjectType o) {
+        if (this.yearRelease > ((Movie)o).getYearRelease()){
+            return 1;
+        } else if (this.yearRelease < ((Movie)o).getYearRelease()){
+            return -1;
+        } return 0;
     }
 }

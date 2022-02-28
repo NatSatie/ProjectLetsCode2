@@ -14,10 +14,8 @@ public class DbMovie extends Database{
     }
 
     public void register(GenericObjectType elem) {
-        if (search((Movie) elem)){
-            System.out.println("Filme " + ((Movie) elem).getName() + " ja existe");
-        } else {
-            add((Movie) elem);
+        if (!search((Movie) elem)){
+            this.add((Movie) elem);
         }
     }
 
