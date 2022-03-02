@@ -1,6 +1,6 @@
 package com.company.classes;
 
-public class Oscar extends GenericObjectType implements Comparable<GenericObjectType>{
+public class Oscar implements Comparable<Oscar>{
     private Actor actor;
     private Movie movie;
     private int actorAge;
@@ -24,10 +24,10 @@ public class Oscar extends GenericObjectType implements Comparable<GenericObject
     }
 
     @Override
-    public int compareTo(GenericObjectType o) {
-        if (this.getActor().getNumberOfOscarsAwarded() > ((Oscar)o).getActor().getNumberOfOscarsAwarded()){
+    public int compareTo(Oscar o) {
+        if (this.getActor().getNumberOfOscarsAwarded() > o.getActor().getNumberOfOscarsAwarded()){
             return 1;
-        } else if (this.getActor().getNumberOfOscarsAwarded() < ((Oscar)o).getActor().getNumberOfOscarsAwarded()){
+        } else if (this.getActor().getNumberOfOscarsAwarded() < o.getActor().getNumberOfOscarsAwarded()){
             return -1;
         } return 0;
     }

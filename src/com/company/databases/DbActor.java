@@ -1,18 +1,15 @@
 package com.company.databases;
 
 import com.company.classes.Actor;
-import com.company.classes.GenericObjectType;
 import com.company.classes.Movie;
 
 import java.util.ArrayList;
 
-public class DbActor extends Database implements DatabaseActorInterface{
+public class DbActor extends Database {
     public DbActor(){
-        super();
-        super.db = new ArrayList<Actor>();
+        super(new ArrayList<Actor>());
     }
 
-    @Override
     public void register(Actor elem, Movie movie) {
         if (this.search(elem.getName())){
             this.add(elem);
@@ -20,11 +17,10 @@ public class DbActor extends Database implements DatabaseActorInterface{
         } else {
             Actor a = this.getElement(elem.getName());
             a.addMovie(movie);
-            super.db.set(this.getIndex(elem.getName()), a);
+            super.db.set(super.db.indexOf(this.getElement(elem.getName())), a);
         }
     }
 
-    @Override
     public Actor getElement(String name) {
         Actor a = (Actor) this.db
                 .stream()
@@ -32,12 +28,6 @@ public class DbActor extends Database implements DatabaseActorInterface{
                 .findFirst()
                 .get();
         return a;
-    }
-
-    public int getIndex(String name) {
-        Actor a = this.getElement(name);
-        int index = super.db.indexOf(a);
-        return index;
     }
 
     private void add(Actor elem) {
@@ -52,9 +42,5 @@ public class DbActor extends Database implements DatabaseActorInterface{
                 .isPresent()){
             return false;
         } return true;
-    }
-
-    private void update(Actor elem, Movie m) {
-        elem.addMovie(m);
     }
 }

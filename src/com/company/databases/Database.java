@@ -8,6 +8,10 @@ import java.util.List;
 public abstract class Database<T>{
     protected List<T> db;
 
+    public Database(List<T> db){
+        this.db = db;
+    }
+
     public List<T> getDb() {
         return db;
     }

@@ -1,8 +1,5 @@
 package com.company.databases;
 
-import com.company.classes.Actor;
-import com.company.classes.GenericObjectType;
-import com.company.classes.Movie;
 import com.company.classes.Oscar;
 
 import java.util.ArrayList;
@@ -10,15 +7,14 @@ import java.util.ArrayList;
 public class DbOscar extends Database{
 
     public DbOscar(){
-        super();
-        super.db = new ArrayList<Oscar>();
+        super(new ArrayList<Oscar>());
     }
 
-    public void register(GenericObjectType elem) {
-        this.add((Oscar) elem);
+    public void register(Oscar elem) {
+        this.add(elem);
     }
 
-    public GenericObjectType getElement(int year) {
+    public Oscar getElement(int year) {
         Oscar o = (Oscar) super.db
                 .stream()
                 .filter(e -> ((Oscar) e).getMovie().getYearRelease() == year)

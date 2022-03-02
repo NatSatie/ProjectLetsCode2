@@ -3,7 +3,7 @@ package com.company.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Actor extends GenericObjectType implements Comparable<GenericObjectType> {
+public class Actor implements Comparable<Actor> {
     private String name;
     private int birthYear;
     private GenderEnum gender;
@@ -41,7 +41,6 @@ public class Actor extends GenericObjectType implements Comparable<GenericObject
     }
 
     private String actorsDescription(){
-        // "Genero " + (gender.equals(GenderEnum.FEMALE) ? " Feminino" : " Masculino") + "\r\n" +
         String s = "Ator: " + this.name + "\r\n" +
                 "Ano de nascimento: " + this.birthYear + "\r\n" +
                 "Genero: " + (gender.equals(GenderEnum.FEMALE) ? " Feminino" : " Masculino") + "\r\n" +
@@ -59,10 +58,10 @@ public class Actor extends GenericObjectType implements Comparable<GenericObject
     }
 
     @Override
-    public int compareTo(GenericObjectType o) {
-        if (this.birthYear > ((Actor)o).getBirthYear()){
+    public int compareTo(Actor o) {
+        if (this.birthYear > o.getBirthYear()){
             return -1;
-        } else if (this.birthYear < ((Actor)o).getBirthYear()){
+        } else if (this.birthYear < o.getBirthYear()){
             return 1;
         } return 0;
     }

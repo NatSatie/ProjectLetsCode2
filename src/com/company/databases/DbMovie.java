@@ -1,7 +1,5 @@
 package com.company.databases;
 
-import com.company.classes.Actor;
-import com.company.classes.GenericObjectType;
 import com.company.classes.Movie;
 
 import java.util.ArrayList;
@@ -9,17 +7,16 @@ import java.util.ArrayList;
 public class DbMovie extends Database{
 
     public DbMovie(){
-        super();
-        super.db = new ArrayList<Movie>();
+        super(new ArrayList<Movie>());
     }
 
-    public void register(GenericObjectType elem) {
-        if (!search((Movie) elem)){
-            this.add((Movie) elem);
+    public void register(Movie elem) {
+        if (!search(elem)){
+            this.add(elem);
         }
     }
 
-    public GenericObjectType getElement(String name) {
+    public Movie getElement(String name) {
         Movie m = (Movie) super.db
                 .stream()
                 .filter(e -> ((Movie) e).getName().equals(name))

@@ -13,14 +13,13 @@ import java.util.Comparator;
 import java.util.List;
 
 public final class DbManager {
-    protected DbActor dbActor = new DbActor();
-    protected DbOscar dbOscar = new DbOscar();
-    protected DbMovie dbMovie = new DbMovie();
+    private DbActor dbActor = new DbActor();
+    private DbOscar dbOscar = new DbOscar();
+    private DbMovie dbMovie = new DbMovie();
 
     public void init(){
         List<String[]> actressInfo = FileReader.readInput("src/com/company/files/actresses.csv");
         List<String[]> actorsInfo = FileReader.readInput("src/com/company/files/actors.csv");
-        List<String[]> sampleTest = FileReader.readInput("src/com/company/files/actors-reduced.csv");
 
         actressInfo.stream().forEach(
                 e -> processInfo((String[]) e, GenderEnum.FEMALE)
@@ -31,42 +30,41 @@ public final class DbManager {
         );
     }
 
-    public void getYoungestActor(){
+    public void getYoungest(GenderEnum gender){
         System.out.println("-------------- Buscar ator premiado ao Oscar mais jovem --------------");
         Comparator<Actor> compareAge = (Actor a1, Actor a2) -> a1.compareTo(a2);
         Collections.sort(this.dbActor.getDb(), compareAge);
 
         Actor actor = (Actor) this.dbActor.getDb().stream()
-            .filter( a -> ((Actor) a).getGender() == GenderEnum.MALE)
+            .filter( a -> ((Actor) a).getGender().equals(gender))
             .findFirst()
             .get();
 
         System.out.println(actor.toString());
     }
 
-    public void getActressMostPremiere(){
+    public void getMostPremiere(GenderEnum gender){
         System.out.println("-------------- Atriz mais premiada --------------");
         MostOscarsComparator comparator = new MostOscarsComparator();
 
         Collections.sort(this.dbActor.getDb(), comparator);
 
         Actor actor = (Actor) this.dbActor.getDb().stream()
-            .filter( a -> ((Actor) a).getGender() == GenderEnum.FEMALE)
+            .filter( a -> ((Actor) a).getGender().equals(gender))
             .reduce((a,b) -> b)
             .get();
 
         System.out.println(actor.toString());
     }
 
-    public void getMostPremiereByAgeGap(int minAge, int maxAge){
+    public void getMostPremiereByAgeGap(GenderEnum gender, int minAge, int maxAge){
         System.out.println("-------------- Atrizes mais premiadas entre os 20 e 30 anos de idade --------------");
         AgeWhenGotOscarComparator comparator = new AgeWhenGotOscarComparator();
 
         Collections.sort(this.dbOscar.getDb(), comparator);
 
-
         this.dbOscar.getDb().stream()
-            .filter( o -> ((Oscar)o).getActor().getGender() == GenderEnum.FEMALE)
+            .filter( o -> ((Oscar)o).getActor().getGender().equals(gender))
             .filter( o -> (((Oscar)o).getActorAge() >= minAge) && (((Oscar)o).getActorAge() <= maxAge))
             .forEach( o -> {
                     System.out.println((((Oscar)o).toString()));
