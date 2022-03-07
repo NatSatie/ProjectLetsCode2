@@ -36,5 +36,5 @@ Ao inicializar o DbManager, ele vai fazer uma leitura das entradas dos arquivos 
 
 `DbManager` tem três atributos privados, `DbOscar`, `DbActor`, `DbMovie`, que correspondem ao banco de dados sobre as premiações do Oscar registradros, atores participantes e os filmes premiados.
 
-
+![](https://raw.githubusercontent.com/NatSatie/ProjectLetsCode2/main/uml.png)
 
