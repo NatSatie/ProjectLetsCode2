@@ -38,3 +38,14 @@ Ao inicializar o DbManager, ele vai fazer uma leitura das entradas dos arquivos 
 
 ![](https://raw.githubusercontent.com/NatSatie/ProjectLetsCode2/main/uml.png)
 
+Cada um desses atributos herdam de `Database`, que tem uma lista de objetos, por exemplo, `DbOscar` tem uma lista de objetos `Oscar` e vice-versa.
+
+### Database
+
+As classes Databases, tem os seguintes métodos principais
+
+- getDb()
+- getElement(T o)
+- register(T o)
+- add(T o) e search(T o) como métodos privados
+
