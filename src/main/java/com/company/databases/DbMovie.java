@@ -20,7 +20,7 @@ public class DbMovie extends Database{
         Movie m = (Movie) super.db
                 .stream()
                 .filter(e -> ((Movie) e).getName().equals(name))
-                .findFirst()
+                .findAny()
                 .get();
         return m;
     }
@@ -32,9 +32,7 @@ public class DbMovie extends Database{
     private boolean search(Movie elem){
         if (super.db
                 .stream()
-                .filter( e -> ((Movie)e).getName().equals(elem.getName()))
-                .findAny()
-                .isPresent()){
+                .anyMatch(e -> ((Movie)e).getName().equals(elem.getName()))){
             return true;
         } return false;
     }

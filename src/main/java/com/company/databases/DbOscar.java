@@ -18,7 +18,7 @@ public class DbOscar extends Database{
         Oscar o = (Oscar) super.db
                 .stream()
                 .filter(e -> ((Oscar) e).getMovie().getYearRelease() == year)
-                .findFirst()
+                .findAny()
                 .get();
         return o;
     }

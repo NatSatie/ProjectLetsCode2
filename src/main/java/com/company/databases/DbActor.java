@@ -4,6 +4,7 @@ import com.company.classes.Actor;
 import com.company.classes.Movie;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class DbActor extends Database {
     public DbActor(){
@@ -23,10 +24,10 @@ public class DbActor extends Database {
 
     public Actor getElement(String name) {
         Actor a = (Actor) this.db
-                .stream()
-                .filter(e -> ((Actor) e).getName().equals(name))
-                .findFirst()
-                .get();
+            .stream()
+            .filter(e -> ((Actor) e).getName().equals(name))
+            .findFirst()
+            .get();
         return a;
     }
 
