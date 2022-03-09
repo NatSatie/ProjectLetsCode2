@@ -15,22 +15,19 @@ import java.util.regex.Pattern;
 public class FileReader {
     public static List readInput(String filename){
         List data = new ArrayList();
-        String in;
         Pattern linePattern = Pattern.compile("[0-9]+;\\s[0-9]{4};\\s[0-9]+;\\s[\\p{IsLatin}a-zA-Z\\-\\s\\.]+;\\s[\\p{IsLatin}a-zA-Z\\s\\.]+");
         BufferedReader reader = null;
         try {
+            String in;
             reader = new BufferedReader( new java.io.FileReader(filename));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
             while ((in = reader.readLine())!= null){
                 Matcher lineMatcher = linePattern.matcher(in);
                 if (lineMatcher.find()){
                     data.add(in.split(";\\s"));
                 }
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

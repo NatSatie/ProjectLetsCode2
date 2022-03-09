@@ -18,7 +18,6 @@ Esse projeto tem `Main.java` no qual inicializa todo o sistema.
 public class Main {
     public static void main(String[] args) {
         DbManager db = new DbManager();
-        db.init();
         db.getYoungest(GenderEnum.FEMALE);
         db.getMostPremiere(GenderEnum.FEMALE);
         db.getMostPremiereByAgeGap(GenderEnum.FEMALE, 20,30);
@@ -30,7 +29,7 @@ public class Main {
 
 Ao observar o código acima, a classe `DbManager` é responsável pelas respostas das perguntas do enunciado.
 
-## db.init()
+## Inicialização
 
 Ao inicializar o DbManager, ele vai fazer uma leitura das entradas dos arquivos csv. Para isso, temos `FileReader` em `src/main/java/com/company/databases/files/FileReader.java` que segue um padrão dado em Regex.
 

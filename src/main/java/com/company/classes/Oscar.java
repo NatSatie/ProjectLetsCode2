@@ -12,11 +12,7 @@ public class Oscar implements Comparable<Oscar>{
 
     @Override
     public int compareTo(Oscar o) {
-        if (this.getActor().getNumberOfOscarsAwarded() > o.getActor().getNumberOfOscarsAwarded()){
-            return 1;
-        } else if (this.getActor().getNumberOfOscarsAwarded() < o.getActor().getNumberOfOscarsAwarded()){
-            return -1;
-        } return 0;
+        return Integer.compare(this.getActor().getNumberOfOscarsAwarded(), o.getActor().getNumberOfOscarsAwarded());
     }
 
     @Override
