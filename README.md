@@ -51,15 +51,8 @@ As classes Databases, tem os seguintes métodos principais
 ## Resultado final
 
 ```
--------------- Buscar atriz premiade mais jovem --------------
-OSCAR de 2003 premiou o filme The Pianist e a atriz Adrien Brody aos seus 29 anos 
-
--------------- Buscar atriz mais jovem --------------
-Ator: Eddie Redmayne
-Ano de nascimento: 1982
-Genero:  Feminino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (1) 
-The Theory of Everything	 (2015) aos 33 anos
+-------------- Buscar ator premiade mais jovem --------------
+OSCAR de 1987 premiou o filme Children of a Lesser God e o ator Marlee Matlin aos seus 21 anos 
 
 -------------- Atriz mais premiade --------------
 Ator: Daniel Day-Lewis
@@ -78,75 +71,40 @@ OSCAR de 1955 premiou o filme On the Waterfront e a atriz Marlon Brando aos seus
 OSCAR de 1978 premiou o filme The Goodbye Girl e a atriz Richard Dreyfuss aos seus 30 anos 
 
 -------------- Atores e atrizes que receberam mais de um Oscar --------------
-Ator: Fredric March
-Ano de nascimento: 1898
-Genero:  Feminino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Dr. Jekyll and Mr. Hyde (1933) aos 35 anos
-The Best Years of Our Lives (1947) aos 49 anos
-
-Ator: Spencer Tracy
-Ano de nascimento: 1901
-Genero:  Feminino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Captains Courageous (1938) aos 37 anos
-Boys Town (1939) aos 38 anos
-
-Ator: Gary Cooper
-Ano de nascimento: 1902
-Genero:  Feminino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Sergeant York (1942) aos 40 anos
-High Noon (1953) aos 51 anos
-
-Ator: Bette Davis
-Ano de nascimento: 1908
+Ator: Hilary Swank
+Ano de nascimento: 1975
 Genero:  Masculino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Dangerous (1935) aos 27 anos
-Jezebel (1938) aos 30 anos
+Boys Don't Cry (2000) aos 25 anos
+Million Dollar Baby (2005) aos 30 anos
 
-Ator: Luise Rainer
-Ano de nascimento: 1909
+Ator: Jodie Foster
+Ano de nascimento: 1963
 Genero:  Masculino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-The Great Ziegfeld (1936) aos 27 anos
-The Good Earth (1937) aos 28 anos
+The Accused (1989) aos 26 anos
+The Silence of the Lambs (1992) aos 29 anos
 
-Ator: Vivien Leigh
-Ano de nascimento: 1913
+Ator: Meryl Streep
+Ano de nascimento: 1950
 Genero:  Masculino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Gone with the Wind (1939) aos 26 anos
-A Streetcar Named Desire (1951) aos 38 anos
+Sophie's Choice (1983) aos 33 anos
+The Iron Lady (2012) aos 62 anos
 
-Ator: Ingrid Bergman
-Ano de nascimento: 1915
+Ator: Sally Field
+Ano de nascimento: 1947
 Genero:  Masculino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Gaslight (1944) aos 29 anos
-Anastasia (1956) aos 41 anos
+Norma Rae (1980) aos 33 anos
+Places in the Heart (1985) aos 38 anos
 
-Ator: Olivia de Havilland
-Ano de nascimento: 1916
+Ator: Jane Fonda
+Ano de nascimento: 1938
 Genero:  Masculino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-To Each His Own (1946) aos 30 anos
-The Heiress (1949) aos 33 anos
-
-Ator: Marlon Brando
-Ano de nascimento: 1925
-Genero:  Feminino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-On the Waterfront (1955) aos 30 anos
-The Godfather (1973) aos 48 anos
-
-Ator: Elizabeth Taylor
-Ano de nascimento: 1931
-Genero:  Masculino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-BUtterfield 8 (1960) aos 29 anos
-Who's Afraid of Virginia Woolf? (1966) aos 35 anos
+Klute (1972) aos 34 anos
+Coming Home (1979) aos 41 anos
 
 Ator: Glenda Jackson
 Ano de nascimento: 1937
@@ -155,12 +113,61 @@ HISTORICO DE FILMES PREMIADOS AO OSCAR (2)
 Women in Love (1971) aos 34 anos
 A Touch of Class (1974) aos 37 anos
 
-Ator: Jane Fonda
-Ano de nascimento: 1938
+Ator: Elizabeth Taylor
+Ano de nascimento: 1931
 Genero:  Masculino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Klute (1972) aos 34 anos
-Coming Home (1979) aos 41 anos
+BUtterfield 8 (1960) aos 29 anos
+Who's Afraid of Virginia Woolf? (1966) aos 35 anos
+
+Ator: Olivia de Havilland
+Ano de nascimento: 1916
+Genero:  Masculino
+HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
+To Each His Own (1946) aos 30 anos
+The Heiress (1949) aos 33 anos
+
+Ator: Ingrid Bergman
+Ano de nascimento: 1915
+Genero:  Masculino
+HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
+Gaslight (1944) aos 29 anos
+Anastasia (1956) aos 41 anos
+
+Ator: Vivien Leigh
+Ano de nascimento: 1913
+Genero:  Masculino
+HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
+Gone with the Wind (1939) aos 26 anos
+A Streetcar Named Desire (1951) aos 38 anos
+
+Ator: Luise Rainer
+Ano de nascimento: 1909
+Genero:  Masculino
+HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
+The Great Ziegfeld (1936) aos 27 anos
+The Good Earth (1937) aos 28 anos
+
+Ator: Bette Davis
+Ano de nascimento: 1908
+Genero:  Masculino
+HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
+Dangerous (1935) aos 27 anos
+Jezebel (1938) aos 30 anos
+
+Ator: Sean Penn
+Ano de nascimento: 1961
+Genero:  Feminino
+HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
+Mystic River (2004) aos 43 anos
+Milk (2009) aos 48 anos
+
+Ator: Tom Hanks
+Ano de nascimento: 1957
+Genero:  Feminino
+HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
+Philadelphia (1994) aos 37 anos
+Forrest Gump (1995) aos 38 anos
 
 Ator: Dustin Hoffman
 Ano de nascimento: 1938
@@ -176,47 +183,33 @@ HISTORICO DE FILMES PREMIADOS AO OSCAR (2)
 One Flew Over the Cuckoo's Nest (1976) aos 38 anos
 As Good as It Gets (1998) aos 60 anos
 
-Ator: Sally Field
-Ano de nascimento: 1947
-Genero:  Masculino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Norma Rae (1980) aos 33 anos
-Places in the Heart (1985) aos 38 anos
-
-Ator: Meryl Streep
-Ano de nascimento: 1950
-Genero:  Masculino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Sophie's Choice (1983) aos 33 anos
-The Iron Lady (2012) aos 62 anos
-
-Ator: Tom Hanks
-Ano de nascimento: 1957
+Ator: Marlon Brando
+Ano de nascimento: 1925
 Genero:  Feminino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Philadelphia (1994) aos 37 anos
-Forrest Gump (1995) aos 38 anos
+On the Waterfront (1955) aos 30 anos
+The Godfather (1973) aos 48 anos
 
-Ator: Sean Penn
-Ano de nascimento: 1961
+Ator: Gary Cooper
+Ano de nascimento: 1902
 Genero:  Feminino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Mystic River (2004) aos 43 anos
-Milk (2009) aos 48 anos
+Sergeant York (1942) aos 40 anos
+High Noon (1953) aos 51 anos
 
-Ator: Jodie Foster
-Ano de nascimento: 1963
-Genero:  Masculino
+Ator: Spencer Tracy
+Ano de nascimento: 1901
+Genero:  Feminino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-The Accused (1989) aos 26 anos
-The Silence of the Lambs (1992) aos 29 anos
+Captains Courageous (1938) aos 37 anos
+Boys Town (1939) aos 38 anos
 
-Ator: Hilary Swank
-Ano de nascimento: 1975
-Genero:  Masculino
+Ator: Fredric March
+Ano de nascimento: 1898
+Genero:  Feminino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-Boys Don't Cry (2000) aos 25 anos
-Million Dollar Baby (2005) aos 30 anos
+Dr. Jekyll and Mr. Hyde (1933) aos 35 anos
+The Best Years of Our Lives (1947) aos 49 anos
 
 Ator: Daniel Day-Lewis
 Ano de nascimento: 1958
@@ -241,13 +234,6 @@ Ano de nascimento: 1945
 Genero:  Feminino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (1) 
 Wall Street (1988) aos 43 anos
-
--------------- Resumo de Adrien Brody -------------- 
-Ator: Adrien Brody
-Ano de nascimento: 1974
-Genero:  Feminino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (1) 
-The Pianist (2003) aos 29 anos
 
 
 Process finished with exit code 0
