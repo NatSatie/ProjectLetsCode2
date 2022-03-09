@@ -1,6 +1,7 @@
 package com.company.databases;
 
 import com.company.classes.*;
+import com.company.classes.comparators.AgeComparator;
 import com.company.classes.comparators.AgeWhenGotOscarComparator;
 import com.company.classes.comparators.MoreThanOneOscarComparator;
 import com.company.classes.comparators.MostOscarsComparator;
@@ -9,6 +10,7 @@ import com.company.databases.files.FileReader;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static java.lang.System.out;
@@ -44,30 +46,41 @@ public final class DbManager {
     }
 
     public void getYoungest(GenderEnum gender){
-        out.println("-------------- Buscar " + (gender.equals(GenderEnum.FEMALE) ? "atriz" : "ator") +" premiade ao Oscar mais jovem --------------");
+        out.println("-------------- Buscar " + (gender.equals(GenderEnum.FEMALE) ? "atriz" : "ator") +" mais jovem --------------");
         Comparator<Actor> compareAge = (Actor a1, Actor a2) -> a1.compareTo(a2);
-        Collections.sort(this.dbActor.getDb(), compareAge);
+        Collections.sort(this.dbActor.getDb(), compareAge.reversed());
 
         Stream<Actor> actorsStream = this.dbActor.getDb().stream();
 
-        String res = actorsStream
+        Optional<Actor> res = actorsStream
             .filter( a -> a.getGender().equals(gender))
-            .findFirst()
-            .get().toString();
+            .findFirst();
 
-        out.println(res);
+        res.ifPresent(out::println);
+    }
+
+    public void getYoungestPremiere(GenderEnum gender){
+        out.println("-------------- Buscar " + (gender.equals(GenderEnum.FEMALE) ? "atriz" : "ator") +" premiade mais jovem --------------");
+        this.dbOscar.getDb().sort(new AgeComparator());
+
+        Optional res = this.dbOscar.getDb()
+                .stream()
+                .filter(o -> ((Oscar) o).getActor().getGender().equals(gender))
+                .findFirst();
+
+        res.ifPresent(out::println);
     }
 
     public void getMostPremiere(GenderEnum gender){
         out.println("-------------- "+ (gender.equals(GenderEnum.FEMALE) ? "Atriz" : "Ator") +" mais premiade --------------");
-        this.dbActor.getDb().sort(new MostOscarsComparator());
+        this.dbActor.getDb().sort(new MostOscarsComparator().reversed());
         Stream<Actor> actorsStream = this.dbActor.getDb().stream();
 
-        Actor res = actorsStream
+        Optional<Actor> res = actorsStream
                 .filter(a -> a.getGender().equals(gender))
-                .reduce((a, b) -> b).get();
+                .findFirst();
 
-        out.println(res.toString());
+        res.ifPresent(out::println);
     }
 
     public void getMostPremiereByAgeGap(GenderEnum gender, int minAge, int maxAge){
@@ -77,13 +90,11 @@ public final class DbManager {
 
         this.dbOscar.getDb().sort(new AgeWhenGotOscarComparator());
 
-        oscarStream
-            .filter( o -> o.getActor().getGender().equals(gender) && (o.getActorAge() >= minAge) && (o.getActorAge() <= maxAge))
-            .forEach( o -> {
-                    out.println(o.toString());
-                    out.println(o.getActor().toString());
-                }
-        );
+        List oscarList = List.of(oscarStream
+                .filter(o -> o.getActor().getGender().equals(gender) && (o.getActorAge() >= minAge) && (o.getActorAge() <= maxAge))
+                .toArray());
+
+        oscarList.forEach(out::println);
     }
 
     private static boolean oscarsAwarded(Object a) {

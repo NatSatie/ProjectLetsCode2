@@ -51,8 +51,10 @@ As classes Databases, tem os seguintes métodos principais
 ## Resultado final
 
 ```
-"C:\Program Files\Java\jdk-11.0.13\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\lib\idea_rt.jar=63470:C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\Natália\IdeaProjects\ProjectLetsCode2\target\classes;C:\Users\Natália\.m2\repository\org\projectlombok\lombok\1.18.22\lombok-1.18.22.jar com.company.Main
--------------- Buscar atriz premiade ao Oscar mais jovem --------------
+-------------- Buscar atriz premiade mais jovem --------------
+OSCAR de 2003 premiou o filme The Pianist e a atriz Adrien Brody aos seus 29 anos 
+
+-------------- Buscar atriz mais jovem --------------
 Ator: Eddie Redmayne
 Ano de nascimento: 1982
 Genero:  Feminino
@@ -69,30 +71,11 @@ There Will Be Blood (2008) aos 50 anos
 Lincoln (2013) aos 55 anos
 
 -------------- Atrizes mais premiades entre os 20 e 30 anos de idade --------------
-OSCAR de 2003 premiou o filme The Pianist e o ator/atriz Adrien Brody aos seus 29 anos 
+OSCAR de 2003 premiou o filme The Pianist e a atriz Adrien Brody aos seus 29 anos 
 
-Ator: Adrien Brody
-Ano de nascimento: 1974
-Genero:  Feminino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (1) 
-The Pianist (2003) aos 29 anos
+OSCAR de 1955 premiou o filme On the Waterfront e a atriz Marlon Brando aos seus 30 anos 
 
-OSCAR de 1955 premiou o filme On the Waterfront e o ator/atriz Marlon Brando aos seus 30 anos 
-
-Ator: Marlon Brando
-Ano de nascimento: 1925
-Genero:  Feminino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (2) 
-On the Waterfront (1955) aos 30 anos
-The Godfather (1973) aos 48 anos
-
-OSCAR de 1978 premiou o filme The Goodbye Girl e o ator/atriz Richard Dreyfuss aos seus 30 anos 
-
-Ator: Richard Dreyfuss
-Ano de nascimento: 1948
-Genero:  Feminino
-HISTORICO DE FILMES PREMIADOS AO OSCAR (1) 
-The Goodbye Girl (1978) aos 30 anos
+OSCAR de 1978 premiou o filme The Goodbye Girl e a atriz Richard Dreyfuss aos seus 30 anos 
 
 -------------- Atores e atrizes que receberam mais de um Oscar --------------
 Ator: Fredric March
@@ -258,6 +241,13 @@ Ano de nascimento: 1945
 Genero:  Feminino
 HISTORICO DE FILMES PREMIADOS AO OSCAR (1) 
 Wall Street (1988) aos 43 anos
+
+-------------- Resumo de Adrien Brody -------------- 
+Ator: Adrien Brody
+Ano de nascimento: 1974
+Genero:  Feminino
+HISTORICO DE FILMES PREMIADOS AO OSCAR (1) 
+The Pianist (2003) aos 29 anos
 
 
 Process finished with exit code 0

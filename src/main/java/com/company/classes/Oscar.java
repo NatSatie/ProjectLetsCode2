@@ -18,7 +18,8 @@ public class Oscar implements Comparable<Oscar>{
     @Override
     public String toString(){
         return "OSCAR de " + this.movie.getYearRelease() + " premiou o filme "
-                + this.movie.getName() + " e o ator/atriz " + this.actor.getName()
+                + this.movie.getName() + " e " +
+                (this.getActor().getGender().equals(GenderEnum.FEMALE) ? "a atriz " : "o ator ") + this.actor.getName()
                 + " aos seus " + this.actorAge + " anos \r\n";
     }
 }

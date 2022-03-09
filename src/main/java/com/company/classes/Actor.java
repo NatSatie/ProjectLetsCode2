@@ -48,10 +48,6 @@ public class Actor implements Comparable<Actor> {
 
     @Override
     public int compareTo(Actor o) {
-        if (this.birthYear > o.getBirthYear()){
-            return -1;
-        } else if (this.birthYear < o.getBirthYear()){
-            return 1;
-        } return 0;
+        return Integer.compare(this.getBirthYear(), o.getBirthYear());
     }
 }
