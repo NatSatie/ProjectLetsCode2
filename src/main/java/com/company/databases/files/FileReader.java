@@ -1,14 +1,9 @@
 package com.company.databases.files;
 
-import com.company.classes.GenderEnum;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +15,7 @@ public class FileReader {
         try {
             String in;
             reader = new BufferedReader( new java.io.FileReader(filename));
-            while ((in = reader.readLine())!= null){
+            while ((in = reader.readLine()) != null){
                 Matcher lineMatcher = linePattern.matcher(in);
                 if (lineMatcher.find()){
                     data.add(in.split(";\\s"));

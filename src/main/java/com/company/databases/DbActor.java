@@ -4,7 +4,8 @@ import com.company.classes.Actor;
 import com.company.classes.Movie;
 
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class DbActor extends Database {
     public DbActor(){
@@ -23,12 +24,13 @@ public class DbActor extends Database {
     }
 
     public Actor getElement(String name) {
-        Actor a = (Actor) this.db
-            .stream()
-            .filter(e -> ((Actor) e).getName().equals(name))
-            .findFirst()
-            .get();
-        return a;
+        Optional a = this.db
+                .stream()
+                .filter(e -> ((Actor) e).getName().equals(name))
+                .findFirst();
+        if (a.isPresent()){
+            return (Actor) a.get();
+        } return null;
     }
 
     private void add(Actor elem) {
@@ -36,12 +38,10 @@ public class DbActor extends Database {
     }
 
     private boolean search(String actor){
-        if (super.db
+        return super.db
                 .stream()
                 .filter( e -> ((Actor)e).getName().equals(actor))
                 .findAny()
-                .isPresent()){
-            return false;
-        } return true;
+                .isEmpty();
     }
 }

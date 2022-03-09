@@ -3,6 +3,7 @@ package com.company.databases;
 import com.company.classes.Movie;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class DbMovie extends Database{
 
@@ -17,12 +18,13 @@ public class DbMovie extends Database{
     }
 
     public Movie getElement(String name) {
-        Movie m = (Movie) super.db
+        Optional m = super.db
                 .stream()
                 .filter(e -> ((Movie) e).getName().equals(name))
-                .findAny()
-                .get();
-        return m;
+                .findAny();
+        if (m.isPresent()){
+            return (Movie) m.get();
+        } return null;
     }
 
     private void add(Movie elem) {
@@ -30,11 +32,9 @@ public class DbMovie extends Database{
     }
 
     private boolean search(Movie elem){
-        if (super.db
+        return super.db
                 .stream()
-                .anyMatch(e -> ((Movie)e).getName().equals(elem.getName()))){
-            return true;
-        } return false;
+                .anyMatch(e -> ((Movie)e).getName().equals(elem.getName()));
     }
 
 }
