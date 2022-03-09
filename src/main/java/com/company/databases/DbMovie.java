@@ -5,10 +5,10 @@ import com.company.classes.Movie;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class DbMovie extends Database{
+public class DbMovie extends Database<Movie>{
 
     public DbMovie(){
-        super(new ArrayList<Movie>());
+        super(new ArrayList<>());
     }
 
     public void register(Movie elem) {
@@ -18,13 +18,11 @@ public class DbMovie extends Database{
     }
 
     public Movie getElement(String name) {
-        Optional m = super.db
+        Optional<Movie> m = super.db
                 .stream()
-                .filter(e -> ((Movie) e).getName().equals(name))
+                .filter(e -> e.getName().equals(name))
                 .findAny();
-        if (m.isPresent()){
-            return (Movie) m.get();
-        } return null;
+        return m.orElse(null);
     }
 
     private void add(Movie elem) {
@@ -34,7 +32,7 @@ public class DbMovie extends Database{
     private boolean search(Movie elem){
         return super.db
                 .stream()
-                .anyMatch(e -> ((Movie)e).getName().equals(elem.getName()));
+                .anyMatch(e -> e.getName().equals(elem.getName()));
     }
 
 }

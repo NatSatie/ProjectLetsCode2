@@ -16,9 +16,9 @@ import java.util.stream.Stream;
 import static java.lang.System.out;
 
 public final class DbManager {
-    private DbActor dbActor = new DbActor();
-    private DbOscar dbOscar = new DbOscar();
-    private DbMovie dbMovie = new DbMovie();
+    private final DbActor dbActor = new DbActor();
+    private final DbOscar dbOscar = new DbOscar();
+    private final DbMovie dbMovie = new DbMovie();
 
     public DbManager(){
         List<String[]> actressInfo = FileReader.readInput("src/main/java/com/company/databases/files/actresses.csv");
@@ -45,27 +45,13 @@ public final class DbManager {
         );
     }
 
-    public void getYoungest(GenderEnum gender){
-        out.println("-------------- Buscar " + (gender.equals(GenderEnum.FEMALE) ? "atriz" : "ator") +" mais jovem --------------");
-        Comparator<Actor> compareAge = (Actor a1, Actor a2) -> a1.compareTo(a2);
-        Collections.sort(this.dbActor.getDb(), compareAge.reversed());
-
-        Stream<Actor> actorsStream = this.dbActor.getDb().stream();
-
-        Optional<Actor> res = actorsStream
-            .filter( a -> a.getGender().equals(gender))
-            .findFirst();
-
-        res.ifPresent(out::println);
-    }
-
     public void getYoungestPremiere(GenderEnum gender){
         out.println("-------------- Buscar " + (gender.equals(GenderEnum.FEMALE) ? "atriz" : "ator") +" premiade mais jovem --------------");
         this.dbOscar.getDb().sort(new AgeComparator());
 
-        Optional res = this.dbOscar.getDb()
+        Optional<Oscar> res = this.dbOscar.getDb()
                 .stream()
-                .filter(o -> ((Oscar) o).getActor().getGender().equals(gender))
+                .filter(o -> o.getActor().getGender().equals(gender))
                 .findFirst();
 
         res.ifPresent(out::println);
@@ -90,7 +76,7 @@ public final class DbManager {
 
         this.dbOscar.getDb().sort(new AgeWhenGotOscarComparator());
 
-        List oscarList = List.of(oscarStream
+        List<Object> oscarList = List.of(oscarStream
                 .filter(o -> o.getActor().getGender().equals(gender) && (o.getActorAge() >= minAge) && (o.getActorAge() <= maxAge))
                 .toArray());
 
@@ -121,10 +107,10 @@ public final class DbManager {
         Movie m = new Movie(movieName, yearRelease);
         Actor a = new Actor(actorName, yearRelease - actorsAge, gender);
         this.dbMovie.register(m);
-        this.dbActor.register( a, (Movie) this.dbMovie.getElement(movieName));
+        this.dbActor.register( a, this.dbMovie.getElement(movieName));
         this.dbOscar.register( new Oscar(
-                (Actor) this.dbActor.getElement(actorName),
-                (Movie) this.dbMovie.getElement(movieName),
+                this.dbActor.getElement(actorName),
+                this.dbMovie.getElement(movieName),
                 actorsAge
         ));
     }

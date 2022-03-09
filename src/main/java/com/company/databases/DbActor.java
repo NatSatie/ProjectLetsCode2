@@ -5,11 +5,10 @@ import com.company.classes.Movie;
 
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public class DbActor extends Database {
+public class DbActor extends Database<Actor> {
     public DbActor(){
-        super(new ArrayList<Actor>());
+        super(new ArrayList<>());
     }
 
     public void register(Actor elem, Movie movie) {
@@ -24,13 +23,11 @@ public class DbActor extends Database {
     }
 
     public Actor getElement(String name) {
-        Optional a = this.db
+        Optional<Actor> a = this.db
                 .stream()
-                .filter(e -> ((Actor) e).getName().equals(name))
+                .filter(e -> e.getName().equals(name))
                 .findFirst();
-        if (a.isPresent()){
-            return (Actor) a.get();
-        } return null;
+        return a.orElse(null);
     }
 
     private void add(Actor elem) {
@@ -40,7 +37,7 @@ public class DbActor extends Database {
     private boolean search(String actor){
         return super.db
                 .stream()
-                .filter( e -> ((Actor)e).getName().equals(actor))
+                .filter( e -> e.getName().equals(actor))
                 .findAny()
                 .isEmpty();
     }

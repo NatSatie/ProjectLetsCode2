@@ -3,11 +3,12 @@ package com.company.databases;
 import com.company.classes.Oscar;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
-public class DbOscar extends Database{
+public class DbOscar extends Database<Oscar>{
 
     public DbOscar(){
-        super(new ArrayList<Oscar>());
+        super(new ArrayList<>());
     }
 
     public void register(Oscar elem) {
@@ -15,12 +16,11 @@ public class DbOscar extends Database{
     }
 
     public Oscar getElement(int year) {
-        Oscar o = (Oscar) super.db
+        Optional<Oscar> o = super.db
                 .stream()
-                .filter(e -> ((Oscar) e).getMovie().getYearRelease() == year)
-                .findAny()
-                .get();
-        return o;
+                .filter(e -> e.getMovie().getYearRelease() == year)
+                .findAny();
+        return o.orElse(null);
     }
 
     private void add(Oscar elem) {
