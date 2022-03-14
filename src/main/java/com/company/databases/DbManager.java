@@ -11,6 +11,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.System.out;
@@ -21,8 +23,8 @@ public final class DbManager {
     private final DbMovie dbMovie = new DbMovie();
 
     public DbManager(){
-        List<String[]> actressInfo = FileReader.readInput("src/main/java/com/company/databases/files/actresses.csv");
-        List<String[]> actorsInfo = FileReader.readInput("src/main/java/com/company/databases/files/actors.csv");
+        List<String[]> actressInfo = FileReader.readInput("src/main/java/com/company/databases/files/atrizes.csv");
+        List<String[]> actorsInfo = FileReader.readInput("src/main/java/com/company/databases/files/atores.csv");
 
         actressInfo.forEach(
                 e -> processInfo(
@@ -72,15 +74,17 @@ public final class DbManager {
     public void getMostPremiereByAgeGap(GenderEnum gender, int minAge, int maxAge){
         out.println("-------------- "+ (gender.equals(GenderEnum.FEMALE) ? "Atrizes" : "Atores") +
                 " mais premiades entre os "+ minAge+" e "+ maxAge+" anos de idade --------------");
-        Stream<Oscar> oscarStream = this.dbOscar.getDb().stream();
+        Stream<Actor> actorStream = this.dbActor.getDb().stream();
 
-        this.dbOscar.getDb().sort(new AgeWhenGotOscarComparator());
+        this.dbActor.getDb().sort(new AgeWhenGotOscarComparator().reversed());
 
-        List<Object> oscarList = List.of(oscarStream
-                .filter(o -> o.getActor().getGender().equals(gender) && (o.getActorAge() >= minAge) && (o.getActorAge() <= maxAge))
-                .toArray());
+        List<Actor> res = actorStream
+                .filter(o -> o.getGender().equals(gender) && o.getNumberOfOscarsAwardedByAgeGap(20,30) > 1)
+                .collect(Collectors.toList());
 
-        oscarList.forEach(out::println);
+        res.forEach(e -> out.println(e.getName()
+                + " recebeu " + e.getNumberOfOscarsAwardedByAgeGap(20,30)
+                + " Oscars entre os 20 a 30 anos. Veja seu resumo: \r\n" + e.toString()));
     }
 
     private static boolean oscarsAwarded(Object a) {

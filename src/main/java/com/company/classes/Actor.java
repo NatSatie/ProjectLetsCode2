@@ -27,6 +27,14 @@ public class Actor implements Comparable<Actor> {
         return this.history.size();
     }
 
+    public int getNumberOfOscarsAwardedByAgeGap(int min, int max) {
+        int res = (int) this.history.stream().filter(e -> {
+            int age = e.getYearRelease() - this.birthYear;
+            return age >= min && age <= max;
+        }).count();
+        return res;
+    }
+
     private String actorsDescription(){
         String s = "Ator: " + this.name + "\r\n" +
                 "Ano de nascimento: " + this.birthYear + "\r\n" +
